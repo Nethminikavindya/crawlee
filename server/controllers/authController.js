@@ -51,7 +51,6 @@ export const register = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
-
 export const login = async (req, res) => {
     const { email, password } = req.body;
 
@@ -89,7 +88,6 @@ export const login = async (req, res) => {
         return res.json({ success: false, message: error.message })
     }
 }
-
 export const logout = async (req, res) => {
     try {
         res.clearCookie('token', {
@@ -164,7 +162,6 @@ export const verifyEmail = async (req, res) => {
         return res.json({ success: false, message: error.message });
     }
 }
-
 //check if user is authenticated
 export const isAuthenticated = async (req, res) => {
     try {
@@ -176,7 +173,6 @@ export const isAuthenticated = async (req, res) => {
 
     }
 }
-
 //send Password Reset OTP
 export const sendResetOtp = async (req, res) => {
 

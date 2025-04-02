@@ -41,10 +41,27 @@ function Navbar() {
     try {
       const res = await axios.post(backendUrl + "/api/auth/logout");
       const data = res.data;
-     if (data.success) {
+      if (data.success) {
         setIsLoggedin(false)
         setUserData(false)
         navigate('/');
+      }
+
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
+  const myProfile = async() => {
+    try {
+      const res = await axios.get(backendUrl + "/api/user/data");
+      const data = res.data;
+
+      if (data.success) {
+        navigate("/my-profile");
+        toast.success(data.message)
+      } else {
+        toast.error(data.message)
       }
 
     } catch (error) {
@@ -71,9 +88,10 @@ function Navbar() {
             <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-10'>
               <ul className='list-none m-0 p-2 bg-gray-100 text-sm'>
                 {!userData.isAccountVerified &&
-                  <li onClick={sendVerificationOtp}
-                    className='py-1 px-2 hover:bg-gray-200 cursor-pointer'>Verify Email</li>}
+                  <li onClick={sendVerificationOtp} className='py-1 px-2 hover:bg-gray-200 cursor-pointer'>Verify Email</li>}
                 <li onClick={logout} className='py-1 px-2 hover:bg-gray-200 cursor-pointer pr-10'>Logout</li>
+                <li onClick={myProfile} className='py-1 px-2 hover:bg-gray-200 cursor-pointer'>My Profile</li>
+
               </ul>
             </div>
 

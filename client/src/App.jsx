@@ -13,6 +13,7 @@ import StudentsEnrolled from "./pages/educator/StudentsEnrolled"
 import Navbar from "./components/students/Navbar"
 import EmailVerify from "./pages/login/EmailVerify"
 import ResetPassword from "./pages/login/ResetPassword"
+import MyProfile from "./pages/login/UserProfile"
 import Login from "./pages/login/Login"
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
@@ -33,6 +34,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/email-verify" element={<EmailVerify />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/my-profile" element={<MyProfile />} />
+
 
 
         <Route path="/course/:id" element={<CourseDetails />} />
